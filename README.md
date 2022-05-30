@@ -6,11 +6,10 @@ This is a small project to test [fast-api's](https://fastapi.tiangolo.com/) conc
 
 ## Installation
 
-Install my-project with npm
+Install pip dependencies
 
 ```bash
   pip install -r requirements.txt
-  cd my-project
 ```
     
 ## Deployment
