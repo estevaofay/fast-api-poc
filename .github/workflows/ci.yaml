@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: estevaofay/fast-api-poc:latest
+          tags: estevaofay/fast-api-poc:${{ env.GITHUB_RUN_ID}}${{ env.GITHUB_RUN_NUMBER }}
