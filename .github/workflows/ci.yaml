@@ -41,3 +41,11 @@ jobs:
           context: .
           push: true
           tags: estevaofay/fast-api-poc:${{ github.run_id }}${{ github.run_number }}
+#  cd:
+#    name: Deploy Playground
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout ArgoCD
+#        uses: actions/checkout@v3
+#        with:
+#          repository: estevaofay/argocd-poc
