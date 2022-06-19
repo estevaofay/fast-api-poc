@@ -57,4 +57,5 @@ jobs:
           cmd: yq eval '.image.tag = "${{ github.run_id }}${{ github.run_number }}"' -i argocd-charts/charts/fast-api-poc/values.yaml
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
+          token: ${{ secrets.PAT }}
           commit_message: Update Tag Name
