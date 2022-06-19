@@ -52,12 +52,12 @@ jobs:
         with:
           repository: estevaofay/argocd-poc
           ref: dev
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
       - name: Update Image Version
         uses: mikefarah/yq@master
         with:
           cmd: yq eval '.image.tag = "${{ github.run_id }}${{ github.run_number }}"' -i argocd-charts/charts/fast-api-poc/values.yaml
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           commit_message: Update Tag Name
