@@ -4,7 +4,7 @@ on:
     branches:
       - main
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [ opened, synchronize, reopened ]
 jobs:
   ci:
     name: Continuous Integration
@@ -41,11 +41,19 @@ jobs:
           context: .
           push: true
           tags: estevaofay/fast-api-poc:${{ github.run_id }}${{ github.run_number }}
-#  cd:
-#    name: Deploy Playground
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout ArgoCD
-#        uses: actions/checkout@v3
-#        with:
-#          repository: estevaofay/argocd-poc
+  cd:
+    name: Deploy Playground
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout ArgoCD
+        uses: actions/checkout@v3
+        with:
+          repository: estevaofay/argocd-poc
+          ref: dev
+      - name: Update Image Version
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq eval '.image.tag = "${{ github.run_id }}${{ github.run_number }}"' -i argocd-charts/charts/fast-api-poc/values.yaml
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update Tag Name
