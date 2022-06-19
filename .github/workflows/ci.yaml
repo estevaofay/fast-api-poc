@@ -44,7 +44,7 @@ jobs:
   cd:
     name: Deploy Playground
     runs-on: ubuntu-latest
-    depends-on: ci
+    needs: [ci]
     steps:
       - name: Checkout ArgoCD
         uses: actions/checkout@v3
