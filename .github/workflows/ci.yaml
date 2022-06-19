@@ -51,6 +51,7 @@ jobs:
         with:
           repository: estevaofay/argocd-poc
           ref: dev
+          token: ${{ secrets.PAT }}
       - name: Update Image Version
         uses: mikefarah/yq@master
         with:
